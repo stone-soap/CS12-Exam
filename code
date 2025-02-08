@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CP12 Final Exam</title>
+		<meta name="description" content="Exam">
+		<meta name="author" content="-kris-">
+		<!--
+			Change log:
+				Created:	09. January 2025											- Drapak
+				Modified:	09. January 2025 	- reworked for better style				- Drapak
+							13. January 2025 	- started 								- kris 
+							21. January 2025 	- Dawn of The First Day -72 hours remain- 	-Kris
+							22. January 2025 	- Dawn of The Second Day -48 hours remain-	-Kris
+							23. January 2025 	- Dawn of The Final Day -24 hours remain-	-Kris
+							24. January 2025 	- Dawn of A New Day 						-Kris
+			
+				Finished:	24. January 2025
+		-->
+		<link rel="icon" type="image/png" href="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+		</script>
+
+<!--	FROM STACK OVERFLOW		-->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="audio.js"></script>
+<!--	https://stackoverflow.com/questions/9300655/play-mp3-file-using-javascript	-->
+
+
+		<style>
+			img{
+				position: absolute;
+				height: 18px;
+				width:  18px;
+			}
+
+			#map {
+				position: absolute;
+				height: 93%;
+				width:  80%;
+				z-index: -1;			
+			}
+
+
+			#nut {
+				position: absolute;
+				height: 34px;
+				width:  34px;
+				z-index: 2;
+				top:  3.4%;
+				left: 61%;
+			}
+
+			#constructPara {
+				position: absolute;
+				left: 83%;
+			}
+
+			h1 {
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;
+			}
+
+			body {
+				background-color: #394298;
+			}
+
+			#nutHeader {
+				position: absolute;
+				top: 	  103%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;				
+			}
+
+			.header {
+				position: absolute;
+				top: 	  110%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;		
+				text-decoration: underline;		
+			}
+
+			#question {
+				position: absolute;
+				top: 	  14%;
+				left:  	  83%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;					
+			}
+
+			#yesButton {
+				position: absolute;
+				top: 	  25%;
+				left:  	  83%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				background-color: #394298;
+				color: #E6EEFF;
+				border: 2px solid #E6EEFF;
+			}
+
+			#noButton {
+				position: absolute;
+				top: 	  25%;
+				left:  	  89%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				background-color: #394298;
+				color: #E6EEFF;
+				border: 2px solid #E6EEFF;				
+			}
+
+			#listHead {
+				position: absolute;
+				left:  	  82%;
+				top:	 30%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;				
+			}
+
+			#rotList {
+				position: absolute;
+				left:  	  79%;
+				top:	 49%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;		
+			}
+
+			#specialColour {
+				color: #FFBA00;
+			}
+
+			#ourple {
+				color: #D96AC6;
+			}
+
+			#audio {
+				position: absolute;
+				left:  	  4%;
+				top:	 6%;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;	
+			}
+
+
+			#headGeneral {
+				left: 1%;
+			}
+
+			#headEast {
+				left: 50%;
+			}
+
+			#headWest {
+				top: 130%;
+				left: 1%;
+			}
+
+			#headNorth {
+				top: 130%;
+				left: 50%;
+			}
+
+			#headSouth {
+				left: 1%;
+				top: 186%;
+			}
+
+			p {
+				position: absolute;
+				font-family: "Copperplate Gothic Light"; 
+				font-style: normal; 
+				font-weight: 700;
+				color: #E6EEFF;				
+			}			
+
+			/*GENERAL ISLAND NUTS - 2*/ 
+			#walnut1Gen {
+				top:	114%;
+				left:	1%;
+			}#walnut2Gen {
+				top:	116%;
+				left:	1%;
+			}
+
+			/*EAST ISLAND NUTS - 5*/ 
+			#walnut1East {
+				top:	114%;
+				left:	50%;
+			}#walnut2East {
+				top:	116%;
+				left:	50%;
+			}#walnut3East {
+				top:	118%;
+				left:	50%;
+			}#walnut4East {
+				top:	120%;
+				left:	50%;
+			}#walnut5East {
+				top:	122%;
+				left:	50%;
+			}
+
+			/*WEST ISLAND NUTS - 24*/ 
+			#walnut1West {
+				top:	134%;
+				left:	1%;
+			}#walnut2West {
+				top:	136%;
+				left:	1%;
+			}#walnut3West {
+				top:	138%;
+				left:	1%;
+			}#walnut4West {
+				top:	140%;
+				left:	1%;
+			}#walnut5West {
+				top:	142%;
+				left:	1%;
+			}#walnut6West {
+				top:	144%;
+				left:	1%;
+			}#walnut7West {
+				top:	146%;
+				left:	1%;
+			}#walnut8West {
+				top:	148%;
+				left:	1%;
+			}#walnut9West {
+				top:	150%;
+				left:	1%;
+			}#walnut10West {
+				top:	152%;
+				left:	1%;
+			}#walnut11West {
+				top:	154%;
+				left:	1%;
+			}#walnut12West {
+				top:	156%;
+				left:	1%;
+			}#walnut13West {
+				top:	158%;
+				left:	1%;
+			}#walnut14West {
+				top:	160%;
+				left:	1%;
+			}#walnut15West {
+				top:	162%;
+				left:	1%;
+			}#walnut16West {
+				top:	164%;
+				left:	1%;
+			}#walnut17West {
+				top:	166%;
+				left:	1%;
+			}#walnut18West {
+				top:	168%;
+				left:	1%;
+			}#walnut19West {
+				top:	170%;
+				left:	1%;
+			}#walnut20West {
+				top:	172%;
+				left:	1%;
+			}#walnut21West {
+				top:	174%;
+				left:	1%;
+			}#walnut22West {
+				top:	176%;
+				left:	1%;
+			}#walnut23West {
+				top:	178%;
+				left:	1%;
+			}#walnut24West {
+				top:	180%;
+				left:	1%;
+			}
+
+			/*NORTH ISLAND NUTS - 17*/ 
+			#walnut1North {
+				top:	134%;
+				left:	50%;
+			}#walnut2North {
+				top:	136%;
+				left:	50%;
+			}#walnut3North {
+				top:	138%;
+				left:	50%;
+			}#walnut4North {
+				top:	140%;
+				left:	50%;
+			}#walnut5North {
+				top:	142%;
+				left:	50%;
+			}#walnut6North {
+				top:	144%;
+				left:	50%;
+			}#walnut7North {
+				top:	146%;
+				left:	50%;
+			}#walnut8North {
+				top:	148%;
+				left:	50%;
+			}#walnut9NorthFIELD {
+				top:	150%;
+				left:	50%;
+			}#walnut10NorthFIELD {
+				top:	152%;
+				left:	50%;
+			}#walnut11NorthFIELD {
+				top:	154%;
+				left:	50%;
+			}#walnut12NorthFIELD {
+				top:	156%;
+				left:	50%;
+			}#walnut13NorthFIELD {
+				top:	158%;
+				left:	50%;
+			}#walnut14NorthFIELD {
+				top:	160%;
+				left:	50%;
+			}#walnut10North {
+				top:	162%;
+				left:	50%;
+			}#walnut11North {
+				top:	164%;
+				left:	50%;
+			}#walnut12North {
+				top:	166%;
+				left:	50%;
+			}#walnut13North {
+				top:	168%;
+				left:	50%;
+			}#walnut14North {
+				top:	170%;
+				left:	50%;
+			}#walnut15North {
+				top:	172%;
+				left:	50%;
+			}#walnut16North {
+				top:	174%;
+				left:	50%;
+			}#walnut17North {
+				top:	176%;
+				left:	50%;
+			}#walnut18North {
+				top:	178%;
+				left:	50%;
+			}
+
+
+
+			/*SOUTH ISLAND NUTS - 6*/ 
+			#walnut1South {
+				top:	190%;
+				left:	1%;
+			}#walnut2South {
+				top:	192%;
+				left:	1%;
+			}#walnut3South {
+				top:	194%;
+				left:	1%;
+			}#walnut4South {
+				top:	196%;
+				left:	1%;
+			}#walnut5South {
+				top:	198%;
+				left:	1%;
+			}#walnut6South {
+				top:	200%;
+				left:	1%;
+			}
+
+
+		</style>
+	</head>
+
+	<!--
+		
+	https://gamerant.com/stardew-valley-golden-walnut-locations/			
+	https://www.thegamer.com/stardew-valley-golden-walnut-location-guide/	
+	https://stardewvalleywiki.com/mediawiki/images/c/c0/Golden_Walnuts_All_Locations.png
+	https://stardewvalleywiki.com/Golden_Walnut	
+
+good colours: 
+#0669BF	#6DF2E5	#F2CB05	#3CD67B	#8AFEDC
+#3258A6	#419FD9	#215911	#9CBF1B	#4CDFF1
+
+
+&#x25A1; box 	NO TABLE!! fix tonight :3
+all divs can be styled via dimming, just take the time writing all the text 
+figure out a counter, check the fish story. 
+
+------------STYLE GUIDE FOR LONG LINES: DO NOT PASS COLUMN 95 -------------------------------|			
+	-->
+	
+	<body>
+
+	    <p id="audio">
+	        <a href="pirate.mp3">Listen &raquo; (in new tab :)</a>        
+	    </p>
+
+		<h1 id = "heading">˖⁺‧₊˚<strong>Exam '24/25</strong>: Kris' ultimate golden walnut guide.˚₊‧⁺˖</h1>
+
+
+		<img 
+			id = "map"
+			src = "https://stardewvalleywiki.com/mediawiki/images/4/47/Ginger_Island_Map.png">
+
+		<img 
+			id = "nut"
+			src = "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png">
+
+		<h2 id = "nutHeader"> ALL GOLDEN WALNUTS - CHECK OFF AS YOU GO!</h2>
+
+		<h3 id="question">Have you found <br>them all?</h3>
+
+		<button id="yesButton">Yes!!!</button>
+		<button id="noButton">No...</button>
+
+		<h3 id="listHead">
+			Getting all the <span id="specialColour">GOLDEN WALNUTS</span> <br> is only a fraction <br> of <span id="ourple">PERFECTION!</span> <br> Other ways include:
+		</h3>
+		<ul id ="rotList">
+			<li>Being friends with everyone!</li> <br>
+			<li>Maxing out your skills!</li> <br>
+			<li>Cooking every recipe!</li><br>
+			<li>Crafting every item!</li><br>
+			<li>Catching every fish!</li><br>
+			<li>Saving the valley from monsters!</li><br>
+			<li>Shipping all your produce!</li><br>
+			<li>Finding every Stardrop <img src="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"> </li>
+		</ul>
+
+
+		<h3 class="header" id="headGeneral"> General Island </h2>			<!-- 2 NUTS  -->
+		<!-- PARAGRAPH FOR EACH DIFFERENT TYPE OF NUT, SHOULD MATCH THE MAP.  -->
+			<p id="walnut1Gen" class="nutDescription"> &#x25A1; [1 nut] Golden coconut <!-- 1 - golden coconut - 1 nut -->	</p>
+			<p id="walnut2Gen" class="nutDescription"> &#x25A1; [5 nuts] Fishing <!-- 2 - fishing - 5 nuts --></p>
+
+
+		<h3 class="header" id="headEast"> Island East </h2>				<!-- 5 NUTS  -->
+			<p id="walnut1East" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 3 - 1 nut by leos --></p>
+			<p id="walnut2East" class="nutDescription"> &#x25A1; [3 nuts] Puzzle<!-- 4 - banana puzzle - 3 nuts --></p>
+			<p id="walnut3East" class="nutDescription"> &#x25A1; [1 nut] Puzzle<!-- 5 - tree in leos - 1 nut --></p>
+			<p id="walnut4East" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 6 - by bird shrine - 1 nut -->	</p>
+			<p id="walnut5East" class="nutDescription"> &#x25A1; [5 nuts] Puzzle <!-- 7 - bird puzzle - 5 nuts --></p>
+
+
+		<h3 class="header" id="headWest"> Island West </h2> 	<!-- 24 NUTS  -->
+			<p id="walnut1West" class="nutDescription"> &#x25A1; [5 nuts] Farming <!-- 8 -  --></p>
+			<p id="walnut2West" class="nutDescription"> &#x25A1; [15 nuts] Puzzle <!-- 9 - -  --> </p>
+			<p id="walnut3West" class="nutDescription"> &#x25A1; [1 nut] Journal Scrap #6 <!-- 10 -  - -->	</p>
+			<p id="walnut4West" class="nutDescription"> &#x25A1; [5 nuts] Mining <!-- 11 -  -  --></p>
+			<p id="walnut5West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 12 -  - -->	</p>
+			<p id="walnut6West" class="nutDescription"> &#x25A1; [1 nut] Puzzle <!-- 13 -  --></p>
+			<p id="walnut7West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 14 -  - --> </p>
+			<p id="walnut8West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 15 -  - -->	</p>
+			<p id="walnut9West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 16 - -  --></p>
+			<p id="walnut10West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 17 -  -  -->	</p>
+			<p id="walnut11West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 18 -  --></p>
+			<p id="walnut12West" class="nutDescription"> &#x25A1; [5 nuts] Quest <!-- 19 -  - --> </p>
+			<p id="walnut13West" class="nutDescription"> &#x25A1; [1 nut] Journal Scrap #4 <!-- 20 -  -  -->	</p>
+			<p id="walnut14West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 21 -   -->	</p>
+			<p id="walnut15West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 22 -  -->	</p>
+			<p id="walnut16West" class="nutDescription"> &#x25A1; [1 nut] Combat <!-- 23 - --></p>
+			<p id="walnut17West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 24 -  --> </p>
+			<p id="walnut18West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 25 -  -->	</p>
+			<p id="walnut19West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 26 -  -->	</p>
+			<p id="walnut20West" class="nutDescription"> &#x25A1; [3 nuts] Puzzle <!-- 27  -->	</p>
+			<p id="walnut21West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 28 -  --></p>
+			<p id="walnut22West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 29 -  --> </p>
+			<p id="walnut23West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 30 -  -->	</p>
+			<p id="walnut24West" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 31 -  --></p>
+
+
+		<h3 class="header" id="headNorth"> Island North </h2>
+			<p id="walnut1North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 32 - banana puzzle - 3 nuts --> </p>
+			<p id="walnut2North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 33 - tree in leos - 1 nut -->	</p>
+			<p id="walnut3North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 34 - by bird shrine - 1 nut --></p>
+			<p id="walnut4North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 35 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut5North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 36 - 1 nut by leos --></p>
+			<p id="walnut6North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 37 - banana puzzle - 3 nuts --> </p>
+			<p id="walnut7North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 38 - tree in leos - 1 nut -->	</p>
+			<p id="walnut8North" class="nutDescription"> &#x25A1; [2 nuts] Exploration <!-- 39 - by bird shrine - 1 nut -->	</p>
+			<p id="walnut9NorthFIELD" class="nutDescription"> &#x25A1; [6 nuts] Island Field Office <!-- 40 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut10NorthFIELD" class="nutDescription"> &#x25A1; [3 nuts] Island Field Office <!-- 40 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut11NorthFIELD" class="nutDescription"> &#x25A1; [1 nut] Island Field Office <!-- 40 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut12NorthFIELD" class="nutDescription"> &#x25A1; [1 nut] Island Field Office <!-- 40 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut13NorthFIELD" class="nutDescription"> &#x25A1; [1 nut] Island Field Office <!-- 40 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut14NorthFIELD" class="nutDescription"> &#x25A1; [1 nut] Island Field Office <!-- 40 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut10North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 41 - 1 nut by leos --></p>
+			<p id="walnut11North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 42 - banana puzzle - 3 nuts --> </p>
+			<p id="walnut12North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 43 - tree in leos - 1 nut -->	</p>
+			<p id="walnut13North" class="nutDescription"> &#x25A1; [1 nut] Journal Scrap #10 <!-- 44 - by bird shrine - 1 nut -->	</p>
+			<p id="walnut14North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 45 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut15North" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 46 - 1 nut by leos --></p>
+			<p id="walnut16North" class="nutDescription"> &#x25A1; [2 nuts] Exploration <!-- 47 - banana puzzle - 3 nuts --> </p>
+			<p id="walnut17North" class="nutDescription"> &#x25A1;  [17 nuts] Volcano Dungeon <!-- 48 - tree in leos - 1 nut -->	</p>
+			<p id="walnut18North" class="nutDescription"> &#x25A1;  [2 nuts] Volcano Dungeon <!-- 48 - tree in leos - 1 nut -->	</p>
+
+
+<!-- ADD MORE TEXT FOR FIELD OFFICE, MINES. FIX LATER -->
+
+
+		<h3 class="header" id="headSouth"> Island South </h2>
+			<p id="walnut1South" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 50 - by bird shrine - 1 nut --></p>
+			<p id="walnut2South" class="nutDescription"> &#x25A1; [1 nut] Fishing <!-- 51 - bird puzzle - 5 nuts -->	</p>
+			<p id="walnut3South" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 52 - 1 nut by leos --></p>
+			<p id="walnut4South" class="nutDescription"> &#x25A1; [5 nuts] Puzzle <!-- 53 - banana puzzle - 3 nuts --> </p>
+			<p id="walnut5South" class="nutDescription"> &#x25A1; [3 nuts] Puzzle <!-- 54 - tree in leos - 1 nut -->	</p>
+			<p id="walnut6South" class="nutDescription"> &#x25A1; [1 nut] Exploration <!-- 55 - by bird shrine - 1 nut --></p>
+
+<!-- I HAVE ONE TOO MANY NUTS?????????????????????????????????????????????????????????????????????????????? 
+	fixed :3 -->
+
+
+
+
+<!-- CONSTRUCTOR, TO EASE THE PLACING OF THE NUTS :P 
+
+		<p id ='constructPara'>      Current mouse position:<br>
+            Top: <span id="topId"></span> <br>
+            Left: <span id="leftId"></span>  </p>
+-->
+        <div id="outputId"></div>
+
+
+<!--	<div> whatevee thell (we need a lot of these)</div> -->
+
+ 		<script>
+
+ 			//INIT - create the array of wayyyy too many nuts (we can cut some out)
+/*		
+			var createNutArr =function(){
+ 				console.log('initialisation of the array');
+
+ 				var goldenWalnutArr = [
+					{
+						name: "walnut1"
+						img: src = "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
+						height: "18px"
+						width: "18px"
+	walnut1					top: ""
+						left: ""
+ */
+
+ 			//INIT - GENERATE RANDOM NUMBER
+			const COMPUTER_GUESS = Math.ceil( Math.random() * 130 );
+			console.log(COMPUTER_GUESS);
+
+
+		//THIS IS NOT WORKING?? 		- if statements refuse to run when animation is on. idk why??
+			//PROCESS - IF STATEMENTS 
+			var nutProcess = function(){
+				if ( COMPUTER_GUESS >= 120 ) {
+					console.log('the special nut :3');
+						specialNut();
+
+				} else {
+					console.log('loser :P');
+						regularNut();
+				}
+			}
+
+			//OUTPUT 1 - SPECIAL
+			var specialNut = function(){
+				console.log("Good job!! You're very lucky :)");
+			}
+
+
+			//OUTPUT 2 - REGULAR
+			var regularNut = function(){
+				console.log("Keep trying, I believe in you :)");
+			}
+
+			document.body.onload = nutProcess
+
+
+
+
+		//	INIT - create the array of wayyyy too many nuts (we can cut some out)
+			var nutObj = {
+ 				id: 			"walnut",
+ 				src: 			"nutArr",
+ 				imageSize: 		18,   //set up the size of each image
+ 			};
+
+			nutObj.createNutArr =function(){
+ 				console.log('initialisation of the array');
+
+ 				 nutObj.goldenWalnutArr = [
+					{top: 583, left: 710}, {top: 453, left: 810}, {top: 389, left: 799}, {top: 352, left: 830}, //4
+					{top: 407, left: 915}, {top: 371, left: 908}, {top: 516, left: 420}, {top: 470, left: 455}, //8
+					{top: 581, left: 484}, {top: 590, left: 402}, {top: 631, left: 374}, {top: 610, left: 297}, //12
+					{top: 593, left: 257}, {top: 581, left: 264}, {top: 579, left: 304}, {top: 599, left: 257}, //16
+					{top: 530, left: 311}, {top: 526, left: 235}, {top: 499, left: 229}, {top: 448, left: 243}, //20
+
+					//change left -10px
+					{top: 410, left: 215}, {top: 458, left: 291}, {top: 444, left: 265}, {top: 437, left: 290}, //24
+					{top: 405, left: 353}, {top: 388, left: 359}, {top: 480, left: 372}, {top: 424, left: 438}, //28
+					{top: 402, left: 476}, {top: 454, left: 421}, {top: 449, left: 638}, {top: 444, left: 601}, //32
+					{top: 430, left: 676}, {top: 429, left: 710}, {top: 367, left: 732}, {top: 326, left: 607}, //36
+					{top: 328, left: 569}, {top: 327, left: 689}, {top: 342, left: 686}, {top: 297, left: 720}, //40
+
+					{top: 279, left: 719}, {top: 231, left: 716}, {top: 296, left: 633}, {top: 260, left: 608}, //44
+					{top: 289, left: 606}, {top: 310, left: 584}, {top: 200, left: 670}, {top: 256, left: 670}, //48
+					{top: 465, left: 687}, {top: 519, left: 786}, {top: 506, left: 803}, {top: 543, left: 787}, //52
+					{top: 533, left: 870}, {top: 509, left: 857} 												//54
+				];
+				//
+				//console.log("nutObj.goldenWalnutArr" + nutObj.goldenWalnutArr);	
+			}
+
+	//	PROCESS -	FOR LOOP
+			nutObj.showNuts = function(){ //LOOP THROUGH THE ARRAY TO DISPLAY ALL THE NUTS ON SCREEN
+					//console.log('help');
+				var nutDisplayCode   = ""; //define and empty string 
+
+					for (i in this.goldenWalnutArr) { //i = row
+ 						var newImage = document.createElement( "img" );
+
+ 							newImage.src = "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png";
+
+ 						
+ 						var topLocation = nutObj.goldenWalnutArr[ i ].top + 'px';
+						var leftLocation = nutObj.goldenWalnutArr[ i ].left + 'px';
+							//console.log('nuts? ' + top);
+						newImage.id = 'walnut' + [i];
+							//console.log(newImage.style.id);
+						newImage.style.top = topLocation;
+ 						newImage.style.left = leftLocation;
+ 						nutObj.outputNuts(newImage);
+
+ 					}
+ 			}
+
+
+
+ 			console.log("my favourite npc in this entire game lives on the island. His name is LEO and he is a little kid who lives in a tree hut with PARROTS. he is happy when you gift him MANGOES. he's the best.")
+
+ 		//OUTPUT??
+
+ 				nutObj.outputNuts = function ( newImage ) {  
+			   		//console.log(newImage.id);
+			   		document.querySelector( '#outputId' ).appendChild(newImage);
+
+				}
+				
+				nutObj.nutInitMain = function(){
+					nutObj.createNutArr();
+					nutObj.showNuts();
+					nutObj.animateNuts();
+				}
+
+				nutObj.animateNuts = function(){
+					//console.log('animate the nuts: ');
+					for (i = 0; i < nutObj.goldenWalnutArr.length; i++) { //i = row
+						$( '#' + 'walnut' + i ).animate( { width: "+=6px", left: "-=3px", height: "+=6px", top: "-=3px"}, { duration: "slow" }  ); 
+						$( '#' + 'walnut' + i ).animate( { width: "-=6px", left: "+=3px", height: "-=6px", top: "+=3px"}, { duration: "slow" }  ); 
+
+					//console.log('nutObj.goldenWalnutArr.length');
+					}
+					setInterval( nutObj.animateNuts, 1000);
+				} 
+
+
+
+				document.body.onload = nutObj.nutInitMain;
+			//document.body.onload = nutObj.animateNuts;
+				
+				
+		//FIRst attempt
+				//GET ONCLICK WORKING 
+				/*var dimFoundNuts = function(keyEvent){
+						//ADD MORE, ONLY ONE RUNS
+					document.querySelector(keyEvent.id).style.opacity = 0.5;
+					console.log('dim nuts');
+
+				}
+
+				document.querySelector('.nutDescription').onclick = dimFoundNuts;*/
+
+
+			//DIMS THE WORDS WHEN CLICKED ON
+				$('.nutDescription').click(function(){
+					document.querySelector("#" + this.id).style.opacity = 0.5;
+					console.log('dim nuts');
+
+				});
+
+
+			var yesAlert = function() {
+	            alert( "Then what are you doing here?" );  
+	        }
+
+			var noAlert = function() {
+	            alert( "Then get back out there!!" );  
+	        }
+
+			document.querySelector('#yesButton').onclick = yesAlert
+			document.querySelector('#noButton').onclick = noAlert
+
+		//MOUSEOVER FUNCTIONS	
+			var nutToStardrop = function (){
+				console.log('stardrop :3');
+				document.querySelector('#nut').src="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png";
+			}
+			var stardropToNut = function (){
+				console.log('back to nut :3');
+				document.querySelector('#nut').src="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png";
+			}
+
+
+			document.querySelector('#nut').onmouseover = nutToStardrop;
+			document.querySelector('#nut').onmouseout = stardropToNut;
+
+
+/*
+            var nutObj = function (myNutNumber) {
+            	console.log ("she golden on my walnut =" + myNutNumber);
+
+            	//INIT - initial variables for nut
+            	//current top and left positions in px
+            	this.top 	= cursorY;
+            	this.left 	= cursorX;
+
+            	this.id = 'image' + myNutNumber + 'id';
+            }
+
+  			//OUTPUT - add a new image to the outputId
+            nutObj.prototype.placeImage = function () {
+                //console.log( 'in nutObj.placeImage...' );
+
+                var newImage        = document.createElement("img");
+                newImage.src        = this.z-index[ 20 ];
+                newImage.id         = this.id;
+                newImage.style.top  = this.top + 'px';
+                newImage.style.left = this.left + 'px';
+                
+                document.querySelector( '#outputId' ).appendChild( newImage );
+            };
+
+
+            //OUTPUT - display position
+            var displayPosition = function ( cursorX, cursorY ) {
+                console.log( 'in nutObj.displayPosition...' );
+
+                document.querySelector( '#topId' ).innerHTML    = cursorX;
+                document.querySelector( '#leftId' ).innerHTML   = cursorY;
+            };
+            
+            //INPUT - this constantly updates and stores the current mouse position
+            document.onmousemove = function( event ){
+                //console.log( 'onmousemove...' );
+                cursorX = event.clientX;
+                cursorY = event.clientY;
+                
+                displayPosition( cursorX, cursorY );
+            }
+
+            var nutArray = []
+        
+            var createNutList = function(){
+            	console.log ("nuts");
+   
+            	var nutObj = {cursorY, cursorX};
+            	nutArray.push(nutObj);
+            	console.log (nutArray);
+            }
+
+ 			window.onmousedown = createNutList;
+
+	CONSTRUCTOR USED TO CREATE THE ARRAY.
+
+{top: 583, left: 720}, {top: 463, left: 820}, {top: 399, left: 809}, {top: 362, left: 840},
+{top: 417, left: 925}, {top: 381, left: 918}, {top: 526, left: 430}, {top: 480, left: 465},
+{top: 591, left: 494}, {top: 600, left: 412}, {top: 641, left: 384}, {top: 620, left: 307}, 
+{top: 603, left: 267}, {top: 591, left: 274}, {top: 589, left: 314}, {top: 609, left: 267},
+{top: 540, left: 321}, {top: 536, left: 245}, {top: 509, left: 239}, {top: 458, left: 253},
+{top: 405, left: 225}, {top: 468, left: 301}, {top: 454, left: 275}, {top: 447, left: 300},
+{top: 415, left: 363}, {top: 398, left: 369}, {top: 490, left: 382}, {top: 434, left: 448},
+{top: 412, left: 486}, {top: 464, left: 431}, {top: 459, left: 648}, {top: 454, left: 611},
+{top: 440, left: 686}, {top: 439, left: 720}, {top: 377, left: 742}, {top: 336, left: 617}, 
+{top: 338, left: 579}, {top: 337, left: 699}, {top: 352, left: 696}, {top: 307, left: 730}, 
+{top: 289, left: 729}, {top: 241, left: 726}, {top: 306, left: 643}, {top: 270, left: 618},
+{top: 299, left: 616}, {top: 320, left: 594}, {top: 210, left: 680}, {top: 266, left: 680}, 
+{top: 475, left: 697}, {top: 529, left: 796}, {top: 516, left: 813}, {top: 553, left: 797},
+{top: 543, left: 880}, {top: 519, left: 867} ];
+ */
+
+
+		</script>
+	</body>
+</html>		
